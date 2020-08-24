@@ -1,0 +1,142 @@
+<div class="modal fade" id="modal-job-review-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="POST" action="/jobs/add-review" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Create Job Review</h4>
+                    <button type="button" class="close close-jobReview" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="text-intro" class="text-center mx-2">
+                    <p>As part of our Key Performance Indicator (KPI), We require all users of the system to provide us
+                        valid feedback. Please give us a few moments of your time to provide us a review to further
+                        improve
+                        our service. Thank you.
+                    </p>
+                </div>
+                <input type="hidden" class="get-jobReview-details" id="ReviewID" name="reviewId">
+                <input type="hidden" class="get-jobReview-details" id="ReviewerID" value="<%= user[0].PersonnelID %>"
+                    name="reviewReviewerId">
+                <input type="hidden" class="get-jobReview-details" id="ReviewValue" name="reviewRatingValue">
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row reviewedTo">
+                            <label for="inpt-reviewedTo" class="col-sm-2 col-form-label">Served By</label>
+                            <div class="col-sm-10">
+                                <input name="reviewedTo" class="form-control get-jobReview-details" id="AssignedToName"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row reviewedBy">
+                            <label for="inpt-reviewedBy" class="col-sm-2 col-form-label">Reviewed By</label>
+                            <div class="col-sm-10">
+                                <input name="reviewedBy" class="form-control get-jobReview-details" id="ReviewedByName"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row dateReviewed">
+                            <label id="lbl-date" for="inpd-dateReviewed" class="col-sm-2 col-form-label">Date
+                                Reviewed</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control get-jobReview-date" id="ReviewDate" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-reviewedTo" class="col-sm-2 col-form-label">Job Order</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input type="text" name="reviewJOnum" readonly class="form-control"
+                                        id="ReviewJONumber" />
+                                    <div id="btn-jo-lookup" class="input-group-append">
+                                        <button class="btn-sm btn-outline-primary" id="btn-getJODetailReport"
+                                            type="button" data-personnel="User">
+                                            <i class="fas fa-file-pdf affix grey-text requestedBy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="inpt-reviewedTo" class="col-sm-2 col-form-label">Job Request</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input type="text" name="reviewJOnum" readonly class="form-control"
+                                        id="ReviewJRNumber" required />
+                                    <div id="btn-jo-lookup" class="input-group-append">
+                                        <button class="btn-sm btn-outline-primary" id="btn-getJRDetailReport"
+                                            type="button" data-personnel="User">
+                                            <i class="fas fa-file-pdf affix grey-text requestedBy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-reviewedTo" class="col-sm-2 col-form-label">Rating</label>
+                            <div class="col-sm-10">
+                                <div class="text-center">
+                                    <span id="rateMe">
+                                        <i class="fas fa-star py-2 px-1 rate-popover" id="oneStar" data-index="0"
+                                            data-value="1" data-html="true" data-toggle="popover" data-placement="top"
+                                            title="Terrible"></i>
+                                        <i class="fas fa-star py-2 px-1 rate-popover" id="twoStars" data-index="1"
+                                            data-value="2" data-html="true" data-toggle="popover" data-placement="top"
+                                            title="Bad"></i>
+                                        <i class="fas fa-star py-2 px-1 rate-popover" id="threeStars" data-index="2"
+                                            data-value="3" data-html="true" data-toggle="popover" data-placement="top"
+                                            title="Average"></i>
+                                        <i class="fas fa-star py-2 px-1 rate-popover" id="fourStars" data-index="3"
+                                            data-value="4" data-html="true" data-toggle="popover" data-placement="top"
+                                            title="Good"></i>
+                                        <i class="fas fa-star py-2 px-1 rate-popover" id="fiveStars" data-index="4"
+                                            data-value="5" data-html="true" data-toggle="popover" data-placement="top"
+                                            title="Excellent"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-reviewSubject" class="col-sm-2 col-form-label">Subject</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="reviewSubject" placeholder="Subject" class="form-control get-jobReview-details"
+                                    id="ReviewSubject" value="Excellent Performance" />
+                                <strong>
+                                    <p id="ReviewSubject-error" class="text-danger"></p>
+                                </strong>
+                                <strong>
+                                    <p id="ReviewSubject-success" class="text-success"></p>
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txt-reviewDescription" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea name="reviewDescription" class="form-control get-jobReview-details" id="ReviewDescription"
+                                    placeholder="Remarks"
+                                    style="resize:vertical">Job Order was successfully served on-time. Client Service was phenomenal and Job Quality was high.</textarea>
+                                <strong>
+                                    <p id="ReviewDescription-error" class="text-danger"></p>
+                                </strong>
+                                <strong>
+                                    <p id="ReviewDescription-success" class="text-success"></p>
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6" id="addReview">
+                                <button type="button" id="btn-submit-jobReview"
+                                    class="btn-sm btn-success form-control">Add Review
+                                </button>
+                            </div>
+                            <div class="col-sm-6" id="btnCancel">
+                                <button type="button" class="btn-sm btn-danger form-control close-jobReview"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

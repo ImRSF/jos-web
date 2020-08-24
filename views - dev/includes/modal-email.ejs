@@ -1,0 +1,58 @@
+<!-- Page Wrapper -->
+<div class="modal fade" id="email-modal">
+  <div class="modal-dialog modal-newsletter">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Subscribe to our newsletter</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Enter your email so that you may be notified about the status of your
+          job request.
+        </p>
+        <div class="input-group">
+          <input type="email" id="inpe-personnelEmail" class="form-control" placeholder="Enter your email" required />
+          <span class="input-group-btn">
+            <input type="hidden" id="inph-personnelID" value="<%= user[0].PersonnelID %>" />
+            <input type="button" id="btn-submit-email" class="btn btn-primary" value="Subscribe" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Main Content -->
+
+<!-- End of Content Wrapper -->
+
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<script>
+  $(document).ready(function () {
+    $("#email-modal").modal("show");
+  });
+  $("#btn-submit-email").on("click", function () {
+    $.ajax({
+      url: "/auth/email",
+      method: "POST",
+      data: {
+        personnelID: $("#inph-personnelID").val(),
+        personnelEmail: $("#inpe-personnelEmail").val()
+      },
+      success(data) {
+        if (data == "Success!") {
+          $("#email-modal").modal("hide");
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,229 @@
+<!-- FIXME: No details when clicking profile-->
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+<!-- Custom styles for this page -->
+<link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../css/custom/dashboard.css">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include('../includes/sidebar.ejs') %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <%- include('../includes/topbar.ejs') %>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container main-section">
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="../jobs/job-requests" class="">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-danger">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Job Requests</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-danger"><%= dashboardOptions.noOfAllJRs %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-primary">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-primary"><%= dashboardOptions.noOfAllJOs %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-reviews" class="">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-success">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Reviews</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-success"><%= dashboardOptions.noOfAllReviews %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <% if (user[0].UserGroupName === "ISS" || user[0].UserGroupName === "SQA") { %>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=5&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-warning">
+                                        <i class="fa fa-clock" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Pending Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-warning"><%= dashboardOptions.PendingJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=2&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-info">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Returned Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-info"><%= dashboardOptions.ReturnedJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=1&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-secondary">
+                                        <i class="fa fa-question" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Submitted Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-secondary"><%= dashboardOptions.SubmittedJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                        <% if (user[0].UserGroupName === "Admin" || user[0].UserGroupName === "SU") { %>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=5&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-secondary">
+                                        <i class="fa fa-clock" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Pending Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-secondary"><%= dashboardOptions.PendingJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=3&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-info">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Served Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-info"><%= dashboardOptions.ServedJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-12 text-center">
+                            <a href="/jobs/job-orders?statusID=4&disableSort=true">
+                                <div class="row main-box-layout img-thumbnail">
+                                    <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-warning">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 col-12 box-text-section">
+                                        <p><strong>Cancelled Job Orders</strong></p>
+                                    </div>
+                                    <div class="label">
+                                        <h3><span
+                                                class="badge badge-pill bg-warning"><%= dashboardOptions.CancelledJobOrders %></span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <%- include('../includes/footer.ejs') %>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <%- include('../includes/modal-logout.ejs') %>
+        <%- include('./modal-account-status.ejs') %>
+        <%- include('./modal-confirm-deleteAccount.ejs') %>
+        <%- include('./modal-account-form.ejs') %>
+
+
+        <!-- Bootstrap core JavaScript-->
+        <%- include('../includes/main-js.ejs') %>
+        <!-- Page level plugins -->
+        <!-- Page level custom scripts -->
+        <% if (!user[0].PersonnelEmail) { %>
+        <%- include('../includes/modal-email') %>
+        <% } %>
+        <!-- Custom JavaScript -->
+</body>
+
+</html>

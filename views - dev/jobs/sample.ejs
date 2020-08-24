@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+<!-- Custom styles for this page -->
+
+<link href="../css/custom/tab-control.css" rel="stylesheet">
+<link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.css" />
+<link rel="stylesheet" type="text/css"
+  href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.css" />
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+        
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+         <h1>Sample</h1>
+         <div id="react-sample"></div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+
+
+  <!-- Bootstrap core JavaScript-->
+  <!-- <%- include('../includes/main-js.ejs') %> -->
+
+  <!-- Page level plugins -->
+  
+<%- include('../includes/main-js.ejs') %>
+<script type="text/babel" src="../js/custom/jobs/react-sample.js"></script>
+
+  <!-- Page level custom scripts -->
+  <!-- <script src="../js/demo/datatables-demo.js"></script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+<!-- Custom styles for this page -->
+<link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../vendor/Buttons-1.5.6/css/buttons.dataTables.min.css">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <hr>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Transaction Logs</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered display" id="table-log" style="width: 100%" width="100%"
+                  cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th><strong>User</strong></th>
+                      <th><strong>Date and Time</strong></th>
+                      <th><strong>Transaction</strong></th>
+                      <th><strong>Transaction Details</strong></th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="inp-userGroupName" value="<%= user[0].UserGroupName %>">
+        <!-- /.container-fluid -->
+      </div>
+
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%- include('../includes/footer.ejs') %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <%- include('../includes/modal-logout.ejs') %>
+
+  <!-- Bootstrap core JavaScript-->
+  <%- include('../includes/main-js.ejs') %>
+  <!-- Page level plugins -->
+
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.flash.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script src="../vendor/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../vendor/JSZip-2.5.0/jszip.min.js"></script>
+
+  <!-- Page level custom scripts -->
+
+  <!-- Custom JavaScript -->
+   <!-- Production -->
+   <script src="../js/custom/auth/table-log.bundle.js"></script>
+
+  <!-- Development -->
+  <script type="module" src="../js/custom/auth/table-log.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #007b5e;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 4px solid !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#tabs .nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  font-size: 20px;
+}
+
+div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+  width: 50%;
+  padding: 5px 20px;
+  box-sizing: border-box;
+}
+
+div.DTE_Body div.DTE_Form_Content {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#customForm {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#customForm fieldset {
+  flex: 1;
+  border: 1px solid #aaa;
+  margin: 0.5em;
+}
+
+#customForm fieldset legend {
+  padding: 5px 20px;
+  border: 1px solid #aaa;
+  font-weight: bold;
+}
+
+#customForm fieldset.name {
+  flex: 2 100%;
+}
+
+#customForm fieldset.name legend {
+  background: #bfffbf;
+}
+
+#customForm fieldset.office legend {
+  background: #ffffbf;
+}
+
+#customForm fieldset.hr legend {
+  background: #ffbfbf;
+}
+
+#customForm div.DTE_Field {
+  padding: 5px;
+}

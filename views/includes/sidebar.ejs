@@ -1,0 +1,164 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <span class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-tools"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Welcome, <%= user[0].PersonnelInitial %> !</div>
+        
+    </span>
+    
+    <br>
+    <!-- <div class="text-center" style="color: white;"><strong>v2.01</strong></div> -->
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <%= path === '/' ? ' active' : '' %>">
+        <a class="nav-link" href="/auth/dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span><%= user[0].UserGroupName + '' %> Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        General Settings
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComponents"
+            aria-expanded="true" aria-controls="collapseComponents">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Components</span>
+        </a>
+        <div id="collapseComponents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <% if (user[0].UserGroupName === "Admin" || user[0].UserGroupName === "SU") {%>
+                <a class="collapse-item" href="/auth/accounts">Accounts</a>
+                <a class="collapse-item" href="/auth/logs">Logs</a>
+                <% } %>
+                <a class="collapse-item" href="/auth/iss-department">ISS Department</a>
+                <!-- <a class="collapse-item" href="/misc/test">Sample React</a> -->
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <% if (user[0].UserGroupName !== "User" && user[0].UserGroupName !== "Approver") { %>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReferences"
+            aria-expanded="true" aria-controls="collapseReferences">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>References</span>
+        </a>
+        <div id="collapseReferences" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Workgroup</h6>
+                <a class="collapse-item" href="/misc/company">Company</a>
+                <a class="collapse-item" href="/misc/department">Department</a>
+                <a class="collapse-item" href="/misc/section">Section</a>
+                <% if (assignedCategoriesLink) { %>
+                <h6 class="collapse-header">Jobs</h6>
+                <%- assignedCategoriesLink %>
+                <% } %>
+                <!-- <h6 class="collapse-header">Categories</h6>
+                <a class="collapse-item" href="#">Category</a>
+                <a class="collapse-item" href="#">Sub Category</a> -->
+            </div>
+        </div>
+    </li>
+    <% } %>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports"
+            aria-expanded="true" aria-controls="collapseReports">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Charts & Reports</span>
+        </a>
+        <div id="collapseReports" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Job Reports</h6>
+                <% if (user[0].UserGroupName === "SU" || user[0].UserGroupName === "Admin" || user[0].UserGroupName === "ISS" || user[0].UserGroupName === "SQA") {%>
+                    <a class="collapse-item" href="/stat/overview">Overview</a>
+                <% } %>
+                <a class="collapse-item" href="/stat/jrSummary">JR Summary</a>
+                <!-- <a class="collapse-item" href="/stat/jrCategory">JR By Category</a> -->
+                <% if (user[0].UserGroupName !== "User" && user[0].UserGroupName !== "Approver" && user[0].UserGroupName !== "Manager") { %>
+                    <a class="collapse-item" href="/stat/joSummary">JO Summary</a>
+                <% } %>
+                <% if (user[0].UserGroupName !== "User" && user[0].UserGroupName !== "Approver" && user[0].UserGroupName !== "ISS" && user[0].UserGroupName !== "Manager") { %>
+                    <a class="collapse-item" href="/stat/joCategory">JO By Category</a>
+                    <a class="collapse-item" href="/stat/jiSummary">Job Items</a>
+                <% } %>
+                <!-- <a class="collapse-item" href="buttons.html">Review Summary</a> -->
+
+                <!-- <h6 class="collapse-header">Job Orders By Hardware</h6>
+                <a class="collapse-item" href="/stat/joHardwarebyWorkstation">By Workstation</a>
+                <a class="collapse-item" href="/stat/joHardwarebyItemType">By Item Type</a> -->
+
+                <!-- <h6 class="collapse-header">TOP 10 Reports</h6>
+                <a class="collapse-item" href="/stat/topTenByJO">By Job Order</a>
+                <a class="collapse-item" href="/stat/topTenByJR">By Job Request</a> -->
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Jobs
+    </div>
+
+    <!-- Nav Item - Job Requests -->
+    <% if (user[0].UserGroupName === "User" || user[0].UserGroupName === "Approver") {%>
+    <li class="nav-item <%= path === '/jobs/job-requests' ? ' disabled active' : '' %> ">
+        <a class="nav-link" href="/jobs/job-requests">
+            <i class="fas fa-fw fa-question"></i>
+            <span>Job Requests</span></a>
+    </li>
+    <% } %>
+    <!-- <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJobRequests"
+                aria-expanded="true" aria-controls="collapseJobRequests">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Job Requests</span>
+            </a>
+            <div id="collapseJobRequests" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Job Requests</h6>
+                    <a class="collapse-item" href="/jobs/job-request-dashboard">
+                        <span>View Job Requests</span></a>
+                </div>
+            </div>
+        </li> -->
+
+    <!-- Nav Item - Job Orders -->
+    <li class="nav-item <%= path === '/jobs/job-orders' ? ' disabled active' : '' %> ">
+        <a class="nav-link" href="/jobs/job-orders">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Job Orders</span></a>
+    </li>
+    
+    <!-- Nav Item - Job Reviews -->
+    <li class="nav-item <%= path === '/jobs/job-reviews' ? ' disabled active' : '' %> ">
+        <a class="nav-link" href="/jobs/job-reviews%>">
+            <i class="fas fa-fw fa-star-half-alt"></i>
+            <span>Job Reviews</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block" />
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>

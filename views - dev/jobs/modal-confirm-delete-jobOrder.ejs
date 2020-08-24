@@ -1,0 +1,34 @@
+<!-- Central Modal Medium Warning -->
+<div class="modal fade" id="modal-confirmDeleteJO" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-warning" role="document">
+        <form method="POST" action="/jobs/delete/job-orders">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Confirmation</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fas fa-trash fa-4x mb-3 animated rotateIn"></i>
+                        <p>This action is irreversible. Are you sure you want to continue?</p>
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <input type="hidden" name="joNum" id="inph-jobOrderNumber">
+                    <button type="submit" class="btn-sm btn-danger form-control">Confirm Delete</button>
+                    <button type="button" class="btn-sm btn-primary form-control" data-dismiss="modal">Go Back</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </form>
+    </div>
+</div>
+<!-- Central Modal Medium Warning-->

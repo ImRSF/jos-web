@@ -1,0 +1,223 @@
+<div class="modal fade" id="modal-job-order-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fluid" role="document">
+        <form method="POST" action="/jobs/job-orders" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">
+                        <a id="lnk-jrNumber" data-withJR="" href="#">Create Job Request</a>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <input type="hidden" name="joId" id="inph-joId">
+                            <input type="hidden" name="jrNum" id="inph-jrNumber">
+                            <input type="hidden" id="inph-subCategoryName">
+                            <input type="hidden" name="categoryId" id="inph-categoryId">
+                            <input type="hidden" name="subCategoryId" id="inph-subCategoryId">
+                            <input type="hidden" name="categoryItemId" id="inph-categoryItemId">
+                            <label for="inpt-joNumber" class="col-sm-1 col-form-label">JO Number</label>
+                            <div class="col-sm-3">
+                                <input type="search" name="joNum" class="form-control" id="inpt-joNumber" readonly>
+                            </div>
+                            <label for="sel-joPriority" style="color: red"
+                                class="col-sm-1 col-form-label">Priority</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="joPriority" id="inph-joPriority" value="1">
+                                <select type="text" class="form-control" id="sel-joPriority"></select>
+                            </div>
+                            <label for="sel-joStatus" class="col-sm-1 col-form-label">Status</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="joStatus" id="inph-joStatus" value="5">
+                                <select type="text" class="form-control" id="sel-joStatus"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-requestedBy" class="col-sm-1 col-form-label">Requested By</label>
+                            <div class="col-sm-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" readonly class="form-control isRequired" id="inpt-requestedBy"
+                                        required>
+                                    <input type="hidden" name="joRequestedBy" class="form-control"
+                                        id="inph-requestedBy">
+                                    <div class="input-group-append">
+                                        <button class="viewPersonnelList btn-sm btn-success attachJobRequest" type="button"
+                                            data-personnel="Employee">Browse</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="inpt-assignedTo" class="col-sm-1 col-form-label">Assignee</label>
+                            <div class="col-sm-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" readonly class="form-control isRequired" id="inpt-assignedTo">
+                                    <input type="hidden" name="joAssignedTo" class="form-control" id="inph-assignedTo">
+                                    <div class="input-group-append">
+                                        <button class="viewPersonnelList btn-sm btn-success" type="button"
+                                            data-personnel="ISS">Browse</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="inpt-reviewedBy" class="col-sm-1 col-form-label">Reviewer</label>
+                            <div class="col-sm-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" readonly class="form-control isRequired" id="inpt-reviewedBy">
+                                    <input type="hidden" name="joReviewedBy" class="form-control" id="inph-reviewedBy">
+                                    <div class="input-group-append">
+                                        <button class="viewPersonnelList btn-sm btn-success" type="button"
+                                            data-personnel="SQA">Browse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-requestedBy" class="col-sm-1 col-form-label">Requestor</label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input type="text" readonly class="form-control isRequired" id="inpt-requestor"
+                                        required>
+                                    <input type="hidden" name="joRequestor" class="form-control"
+                                        id="inph-requestor">
+                                    <div class="input-group-append">
+                                        <button class="viewPersonnelList attachJobRequest btn-sm btn-success" type="button"
+                                            data-personnel="User">Browse</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="inpt-requestedBy" class="col-sm-1 col-form-label">JR Number</label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input type="text" readonly class="form-control isRequired" id="inpt-requestor"
+                                        required>
+                                    <input type="hidden" name="joRequestor" class="form-control"
+                                        id="inph-requestor">
+                                    <div class="input-group-append">
+                                        <button class="viewPersonnelList attachJobRequest btn-sm btn-primary" type="button"
+                                            data-personnel="User">Get Job Request</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inline" id="jo-attachedCategory">
+                            <h6 class="mt-2 mx-1">Category</h6>
+                            <button id="btn-joAddCategory" class="btn-sm btn-danger" type="button">Attach Category</button>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inph-company" class="col-sm-1 col-form-label">Company</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="company" id="inph-company"
+                                    value="27E6F3D8-7CCF-4BE5-8330-FE3B3170D1D6">
+                                <input type="text" class="form-control" id="inpt-company" readonly>
+                            </div>
+                            <label for="inph-department" class="col-sm-1 col-form-label">Department</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="department" id="inph-department">
+                                <input type="text" class="form-control" id="inpt-department" readonly>
+                            </div>
+                            <label for="inph-section" class="col-sm-1 col-form-label">Section</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="section" id="inph-section">
+                                <input type="text" class="form-control" id="inpt-section" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpd-dateRequested" class="col-sm-2 col-form-label">Date Requested</label>
+                            <div class="col-sm-2">
+                                <input type="date" name="joDateRequested" class="form-control" id="inpd-dateRequested">
+                            </div>
+                            <label for="inpd-deadline" class="col-sm-2 col-form-label">Deadline</label>
+                            <div class="col-sm-2">
+                                <input type="date" name="joDeadline" class="form-control validDatesForJO" id="inpd-deadline">
+                            </div>
+                            <label for="inpd-dateServed" class="col-sm-2 col-form-label dateServed">Date Served</label>
+                            <div class="col-sm-2">
+                                <input type="date" name="joDateServed" class="form-control validDatesForJO dateServed" id="inpd-dateServed">
+                            </div>
+                        </div>
+                        <div class="form-inline" id="jo-attachedFile">
+                            <h6 class="mt-2 mx-1">Attached File(s)</h6>
+                        </div>
+                        <div class="form-group row" id="f-jobOrder">
+                            <div class="col-sm-12">
+                                <input type="file" multiple class="form-control-file" name="file-jobOrder"
+                                    id="inpf-jobOrder">
+                                <!-- <label class="custom-file-label" for="inpf-jobOrder">Choose file</label> -->
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txt-details" class="col-sm-1 col-form-label">Detail(s)</label>
+                            <div class="col-sm-11">
+                                <textarea name="joDetails" class="form-control" id="txt-details"
+                                    style="resize:vertical"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txt-actions" class="col-sm-1 col-form-label">Action(s)</label>
+                            <div class="col-sm-11">
+                                <textarea name="joActions" class="form-control" id="txt-actions"
+                                    style="resize:vertical"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txt-details" class="col-sm-1 col-form-label">Remark(s)</label>
+                            <div class="col-sm-11">
+                                <textarea name="joRemarks" class="form-control" id="txt-remarks"
+                                    style="resize:vertical"></textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <button type="button" id="btn-submit-addJobItems"
+                                    class="btn btn-unique form-control">Add Job Items<i
+                                        class="fas fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" id="btn-submit-clearJobItems"
+                                    class="btn btn-unique form-control">Clear Job Items<i
+                                        class="fas fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="test" id="test1">
+                        <div class="form-group row">
+                            <div class="table-responsive" id="jobItems">
+                                <table data-jobItems="" class="table table-bordered display" id="table-job-items"
+                                    style="width: 100%" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th><strong>Item Name</strong></th>
+                                            <th><strong>ItemMasterID</strong></th>
+                                            <th><strong>WorkStatID</strong></th>
+                                            <th><strong>Workstation</strong></th>
+                                            <th><strong>Item Description</strong></th>
+                                            <th><strong>Serial Number</strong></th>
+                                            <th><strong>Date Acquired</strong></th>
+                                            <th><strong>General Status</strong></th>
+                                            <th><strong>Actions</strong></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <button type="submit" id="btn-submit-jobOrder" class="btn btn-unique form-control">Send
+                                    <i class="fas fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" id="btn-cancel-jobOrder" data-dismiss="modal"
+                                    class="btn btn-danger form-control">Cancel <i
+                                        class="fas fa-paper-plane-o ml-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

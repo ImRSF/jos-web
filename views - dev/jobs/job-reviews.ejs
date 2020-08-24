@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../includes/head.ejs') %>
+  <!-- Library CSS -->
+  <link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../vendor/Buttons-1.5.6/css/buttons.dataTables.min.css">
+
+  <!-- Custom styles for this page -->
+  <link rel="stylesheet" href="../css/custom/dataTables-custom.css">
+  <link rel="stylesheet" href="../css/custom/rating.css">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <!-- DataTables Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Job Reviews</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered display"  id="table-job-review" style="width: 100%" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th><strong>Review ID</strong></th>
+                      <th><strong>JO Number</strong></th>
+                      <th><strong>Date Reviewed</strong></th>
+                      <th><strong>Served By</strong></th>
+                      <th><strong>Reviewed By</strong></th>
+                      <th><strong>Rating</strong></th>
+                      <th><strong>Actions</strong></th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%- include('../includes/footer.ejs') %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  
+  <!-- Modals -->
+  <%- include('../includes/modal-logout.ejs') %>
+  <%- include('./modal-get-jobOrdersForReview.ejs') %>
+  <%- include('./modal-job-review-form.ejs') %>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <%- include('../includes/main-js.ejs') %> 
+
+  <!-- Page level plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.debug.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.plugin.autotable.min.js"></script>
+  
+  <!-- Page level custom scripts -->
+
+  <!-- Custom JavaScript -->
+  <!-- Production -->
+  <!-- <script src="../js/custom/misc.js"></script>
+  <script src="../js/custom/jobs/table-job-review.js"></script>  
+  <script src="../js/custom/jobs/table-get-jobOrdersForReview.js"></script>  
+  <script src="../js/custom/jobs/job-review.js"></script>
+  <script src="../js/custom/jobs/rating.js"></script>  -->
+
+  <!-- Development -->
+  <script type="module" src="../js/custom/misc.js"></script>
+  <script type="module" src="../js/custom/jobs/table-job-review.js"></script>  
+  <script type="module" src="../js/custom/jobs/table-get-jobOrdersForReview.js"></script>  
+  <script type="module" src="../js/custom/jobs/job-review.js"></script>
+  <script type="module" src="../js/custom/jobs/rating.js"></script> 
+
+</body>
+
+</html>

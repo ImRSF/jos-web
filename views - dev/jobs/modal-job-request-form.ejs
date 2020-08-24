@@ -1,0 +1,176 @@
+<div class="modal fade" id="modal-job-request-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="frm-jobRequest" method="POST" action="/jobs/job-requests" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold" id="h4-jobRequest">Job Request Form</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <input type="hidden" name="requestId" id="RequestID" class="get-jobRequest-details">
+          <input type="hidden" name="submittedFrom" id="inph-submittedFrom">
+          <input type="hidden" name="lastStatus" id="inph-lastStatus">
+          <input type="hidden" name="requestedBy" id="RequestedBy" class="get-jobRequest-details">
+          <input type="hidden" name="approvedBy" id="ApprovedBy" class="get-jobRequest-details">
+
+          <div class="md-form">
+            <div class="md-form row">
+              <div class="md-form col-6">
+                <span class="do-validation">
+                  <h6><strong>Job Request Number</strong></h6>
+                  <input data-parsley-max="2" data-parsley-min="1" type="text" id="RequestNumber"
+                    class="form-control get-jobRequest-details" name="requestNumber" readonly>
+                </span>
+              </div>
+              <div class="md-form col-6">
+                <span class="do-validation">
+                  <h6><strong>Attached JO</strong></h6>
+                  <div class="input-group">
+                    <input type="text" id="JobNumber" class="form-control get-jobRequest-details" readonly>
+                    <i id="img-viewJODetailedReport" class="fas fa-file-pdf affix grey-text"></i>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
+            <div class="md-form row">
+              <div class="md-form col-6" id="DateSentField">
+                <h6><strong>Date Sent</strong></h6>
+                <input type="date" class="form-control isValidDate get-jobRequest-date" id="DateSent" name="dateSent"
+                  readonly>
+              </div>
+              <div class="md-form col-6">
+                <h6><strong>Date <span id="t-statusName">Approved</span></strong></h6>
+                <input type="date"
+                  class="form-control isValidDate get-jobRequest-date view-show approved-hide cancelled-hide"
+                  id="DateApprovedOrCancelled" name="dateApproved" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="md-form">
+            <h6><strong>Requested By (Your Name)</strong></h6>
+            <span class="do-validation"></span>
+            <div class="input-group mb-3">
+              <input data-parsley-max="2" id="RequestedByName" type="text" class="form-control get-jobRequest-details"
+                aria-label="Requested By" aria-describedby="basic-addon2" name="requestedByName" readonly>
+              <i id="img-viewEmployeeList"
+                class="fas fa-search affix grey-text default-user-show default-approver-hide view-hide approved-hide cancelled-hide"></i>
+            </div>
+            <strong>
+              <p id="RequestedByName-error" class="text-danger"></p>
+            </strong>
+            <strong>
+              <p id="RequestedByName-success" class="text-success"></p>
+            </strong>
+          </div>
+          <div class="md-form">
+            <h6><strong id="txt-toBeApproved">To be Approved By</strong></h6>
+            <span class="do-validation"></span>
+            <div class="input-group mb-3">
+              <input id="ApprovedByName" type="text" class="form-control get-jobRequest-details"
+                aria-label="Requested By" aria-describedby="basic-addon2" readonly required>
+              <i id="img-viewApproverList"
+                class="fas fa-search affix grey-text default-user-show default-approver-hide viewPersonnelList view-hide approved-hide cancelled-hide"
+                data-personnel="Approver"></i>
+            </div>
+            </span>
+          </div>
+          <div class="md-form">
+            <div class="md-form row">
+              <div class="md-form col">
+                <h6><strong>Contact Number (e.g. 09074122389)</strong></h6>
+                <div class="input-group">
+                  <input id="ContactNo" name="contactNo" type="text"
+                    class="form-control get-jobRequest-details view-readonly approved-readonly cancelled-readonly"
+                    aria-label="Contact Number" aria-describedby="basic-addon2">
+                </div>
+                <strong>
+                  <p id="ContactNo-error" class="text-danger"></p>
+                </strong>
+                <strong>
+                  <p id="ContactNo-success" class="text-success"></p>
+                </strong>
+              </div>
+              <div class="md-form col">
+                <h6><strong>Status</strong></h6>
+                <div class="input-group">
+                  <input id="StatusName" type="text" class="form-control get-jobRequest-details" aria-label="Status"
+                    aria-describedby="basic-addon2" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md-form">
+            <h6><strong>Subject</strong></h6>
+            <input data-parsley-max="2" type="text" id="RequestSubject"
+              class="form-control validate get-jobRequest-details view-readonly approved-readonly cancelled-readonly"
+              name="subject">
+            <strong>
+              <p id="RequestSubject-error" class="text-danger"></p>
+            </strong>
+            <strong>
+              <p id="RequestSubject-success" class="text-success"></p>
+            </strong>
+          </div>
+          <div class="md-form">
+            <h6><strong>Description</strong></h6>
+            <textarea type="text" id="RequestDescription"
+              class="md-textarea form-control get-jobRequest-details view-readonly approved-readonly cancelled-readonly"
+              name="description" rows="4"></textarea>
+            <strong>
+              <p id="RequestDescription-error" class="text-danger"></p>
+            </strong>
+            <strong>
+              <p id="RequestDescription-success" class="text-success"></p>
+            </strong>
+          </div>
+
+          <div class="md-form form-group" id="jr-attachedFile">
+            <h6><strong>Attached File(s)</strong></h6>
+          </div>
+          <div class="md-form form-group" id="f-jobRequest">
+            <div class="md-form">
+              <input type="file" multiple
+                class="form-control-file default-user-show default-approver-show view-hide approved-hide cancelled-hide"
+                id="inpf-jobRequest" name="file-jobRequest">
+              <strong>
+                <p id="inpf-jobRequest-error" class="text-danger"></p>
+              </strong>
+              <!-- <sub class="text-success">Maximum of 5 files only</sub> -->
+            </div>
+          </div>
+        </div>
+        <div class="md-form form-group row">
+          <div class="col-sm-6">
+            <div class="modal-footer approveButton">
+              <button type="submit" name="jobStatus" value="1" data-confirm-action="submit" id="btn-submit-jobRequest"
+                class="btn-sm btn-primary form-control withConfirmation default-user-show default-approver-hide view-hide approved-hide cancelled-hide">Submit</button>
+              <button type="submit" name="jobStatus" value="6" data-confirm-action="approve" id="btn-approve-jobRequest"
+                class="btn-sm btn-success form-control withConfirmation default-user-hide default-approver-show view-hide approved-show cancelled-hide">Approve</button>
+              <button type="submit" name="jobStatus" value="4" data-confirm-action="cancel" id="btn-cancel-jobRequest"
+                class="btn-sm btn-warning form-control withConfirmation default-user-hide default-approver-hide view-hide approved-hide cancelled-show">Cancel</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="modal-footer cancelButton">
+              <button type="button" id="btn-smallExit" data-dismiss="modal" aria-label="Close"
+                class="btn-sm btn-danger form-control default-user-show default-approver-show view-hide approved-show cancelled-show">Close</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" aria-label="Close" id="btn-bigExit"
+              class="btn-sm btn-danger form-control default-user-hide default-approver-hide view-show approved-hide cancelled-hide">Close</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  </form>
+</div>
+</div>

@@ -1,0 +1,259 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+          <div class="col-lg-12">
+            <div class="p-5">
+              <form class="user" method="POST" action="/auth/edit-account" enctype="multipart/form-data">
+                <div class="text-center">
+                  <img style="width: 200px;height: 200px;" class="mx-5" id="img-accountImage"
+                    src="/<%= user[0].AccountImage %>" alt="Account Image">
+                  <h1 class="h4 text-gray-900 mb-4"></h1>
+                </div>
+                <div class="form-group row">
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">First Name</label>
+                  <div class="col-sm-3 mb-3 mb-sm-0">
+                    <input type="text" name="fName"
+                      class="form-control <%= validationErrors().find(e => e.param === 'fName') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-firstName" placeholder="First Name"
+                      value="<%= oldInput().fName || user[0].PersonnelFname %>" readonly>
+                    <% if (validationErrors().find(e => e.param === "fName")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "fName"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">Middle Name</label>
+                  <div class="col-sm-3">
+                    <input type="text" name="mName"
+                      class="form-control <%= validationErrors().find(e => e.param === 'mName') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-middleName" placeholder="Middle Name"
+                      value="<%= oldInput().mName || user[0].PersonnelMname %>" readonly>
+                    <% if (validationErrors().find(e => e.param === "mName")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "mName"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">Last Name</label>
+                  <div class="col-sm-3">
+                    <input type="text" name="lName"
+                      class="form-control <%= validationErrors().find(e => e.param === 'lName') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-lastName" placeholder="Last Name"
+                      value="<%= oldInput().lName || user[0].PersonnelLname %>" readonly>
+                    <% if (validationErrors().find(e => e.param === "lName")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "lName"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <input type="text" name="employeeNo"
+                      class="form-control <%= validationErrors().find(e => e.param === 'employeeNo') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-employeeNo" value="<%= oldInput().employeeNo || user[0].EmployeeNo %>"
+                      placeholder="Employee #" readonly>
+                    <% if (validationErrors().find(e => e.param === "employeeNo")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                            return e.param === "employeeNo"
+                          }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">Position</label>
+                  <div class="col-sm-3">
+                    <input type="text" name="position"
+                      class="form-control <%= validationErrors().find(e => e.param === 'position') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-position" placeholder="Position"
+                      value="<%= oldInput().position || user[0].PersonnelPosition %>" readonly>
+                    <% if (validationErrors().find(e => e.param === "position")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "position"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                  <div class="col-sm-4">
+                    <select class="form-control" name="userGroup" id="sel-userGroup">
+                      <option value="" disabled selected>Select UserGroup</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="hidden" name="personnelId" value="<%= user[0].PersonnelID %>">
+                <input type="hidden" name="assignedCategoryId" value="<%= user[0].Identity %>">
+                <!-- <input type="hidden" name="userGroup" value="3"> -->
+                <input type="hidden" name="prevImage" value="<%= user[0].AccountImage %>">
+                <input type="hidden" name="mode" value="Create">
+                <input type="hidden" name="accountStatus" value="1">
+                <input type="hidden" name="companyId" id="inph-company"
+                  value="<%= oldInput().company || user[0].CompanyID %>">
+                <input type="hidden" name="departmentId" id="inph-department"
+                  value="<%= oldInput().department || user[0].DepartmentID %>">
+                <input type="hidden" name="sectionId" id="inph-section"
+                  value="<%= oldInput().section || user[0].SectionID %>">
+
+                <input type="hidden" name="submittedFrom" value="<%= submittedFrom %>">
+ 
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <div class="custom-file">
+                      <input type="file" id="inpf-accountImage" multiple class="form-control-file"
+                        name="file-accountImage" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <input type="text"
+                      class="form-control <%= validationErrors().find(e => e.param === 'company') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-company" value="<%= oldInput().companyName || user[0].CompanyInitial %>"
+                      placeholder="Company" readonly>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text"
+                      class="form-control <%= validationErrors().find(e => e.param === 'department') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-department" value="<%= oldInput().departmentName || user[0].DepartmentName %>"
+                      placeholder="Department" readonly>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text"
+                      class="form-control <%= validationErrors().find(e => e.param === 'section') ? 'is-invalid' : '' %> form-control-user"
+                      id="inpt-section" value="<%= oldInput().sectionName || user[0].SectionDescription %>"
+                      placeholder="Section" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">Email</label>
+                  <div class="col-sm-5">
+                    <input type="email" name="email"
+                      class="form-control <%= validationErrors().find(e => e.param === 'email') ? 'is-invalid' : '' %> form-control-user"
+                      id="exampleLastName" placeholder="Email Address"
+                      value="<%= oldInput().email || user[0].PersonnelEmail %>">
+                    <% if (validationErrors().find(e => e.param === "email")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                        return e.param === "email"
+                      }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                  <label for="sel-joPriority" class="col-sm-1 col-form-label">Username</label>
+                  <div class="col-sm-5">
+                    <input type="text" name="username"
+                      class="form-control <%= validationErrors().find(e => e.param === 'username') ? 'is-invalid' : '' %> form-control-user"
+                      id="exampleInputEmail" placeholder="Username"
+                      value="<%= oldInput().username || user[0].Username %>">
+                    <% if (validationErrors().find(e => e.param === "username")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "username"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="sel-joPriority" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password"
+                      class="form-control <%= validationErrors().find(e => e.param === 'password') ? 'is-invalid' : '' %> form-control-user"
+                      id="exampleInputPassword" placeholder="Password"
+                      value="<%= oldInput().password || user[0].WebPassword %>">
+                    <% if (validationErrors().find(e => e.param === "password")) { %>
+                    <div class="invalid-feedback">
+                      <% const result = validationErrors().find(e => {
+                          return e.param === "password"
+                        }) %>
+                      <%= result.msg %>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <textarea name="accountDescription" class="form-control"
+                      id=""><%= user[0].AccountDescription %></textarea>
+                  </div>
+                </div>
+                <div class="form-group row" id="assignedApprover">
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-user btn-block" id="btn-searchApprover" type="button">
+                      Search Approver
+                    </button>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="sel-approver" name="assignedApprover">
+                      <option selected>Select Approver</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="category">
+                    <% if (jobCategories) { %>
+                    <%- jobCategories %>
+                    <% } %>
+                  </div>
+                </div>
+                <hr>
+                <% removeErrorMessages() %>
+                <button class="btn-sm btn-primary btn-user btn-block" id="btn-submit-account" type="submit">
+                  Update Account
+                </button>
+                <button class="btn-sm btn-danger btn-user btn-block" id="btn-goBack" type="button">
+                  Go Back
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Core JavaScript Files -->
+  <%- include('../includes/main-js.ejs') %>
+  <%- include('./modal-employee-list.ejs') %>
+
+  <!-- Page Level Plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+
+  <!-- Custom JavaScript Files -->
+  <!-- Production -->
+  <script src="/js/custom/misc.bundle.js"></script>
+  <script src="/js/custom/auth/edit-account.bundle.js"></script>
+
+  <!-- Development -->
+  <!-- <script type="module" src="/js/custom/misc.js"></script>
+  <script type="module" src="/js/custom/auth/edit-account.js"></script> -->
+
+</body>
+
+</html>

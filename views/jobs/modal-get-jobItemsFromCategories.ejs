@@ -1,0 +1,49 @@
+<div class="modal fade" id="modal-job-category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container">
+          <div class="form-group row">
+            <label for="sel-category" class="col-sm-2 col-form-label">Category</label>
+            <div class="col-sm-4">
+              <select type="text" class="form-control" name="networkCategory" id="sel-category">
+              </select>
+            </div>
+            <label for="sel-category" class="col-sm-2 col-form-label">Sub Category</label>
+            <div class="col-sm-4">
+              <select type="text" class="form-control" name="networkCategory" id="sel-subCategory">
+              </select>
+            </div>
+          </div>
+        </div>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <input type="hidden" id="personnelList">
+          <input type="hidden" id="personnelInputId">
+          <div class="table-responsive" id="jobItems">
+            <table data-jobItems="" class="table table-bordered display" id="table-job-itemsFromCategories" style="width: 100%"
+              width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><strong>Item ID</strong></th>
+                  <th><strong>Name</strong></th>
+                  <th><strong>Description</strong></th>
+                  <th><strong>Remarks</strong></th>
+                  <th><strong>Company</strong></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-sm btn-danger form-control" type="button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

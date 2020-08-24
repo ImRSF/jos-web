@@ -1,0 +1,76 @@
+<div class="modal fade" id="modal-system-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="POST" action="/misc/system" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">
+                        Add New System
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <input type="hidden" name="systemId" id="inph-systemId" />
+                            <label for="inpt-systemInitial" class="col-sm-3 col-form-label">System Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="systemName" id="inpt-systemName"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-systemName" class="col-sm-3 col-form-label">System Description</label>
+                            <div class="col-sm-9">
+                                <textarea name="systemDescription" class="form-control" id="txt-systemDescription"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-systemName" class="col-sm-3 col-form-label">Remarks</label>
+                            <div class="col-sm-9">
+                                <textarea name="systemRemarks" class="form-control" id="txt-systemRemarks"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-subCategory" class="col-sm-3 col-form-label">Sub Category</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="form-control" name="systemCategory"
+                                    id="sel-subCategory"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-company" class="col-sm-3 col-form-label">Company</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="form-control" name="systemCompany" id="sel-company"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-referenceStatus" class="col-sm-3 col-form-label">Status</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="form-control" name="systemStatus"
+                                    id="sel-referenceStatus"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <button type="submit" id="btn-submit-system"
+                                    class="btn-small btn-primary form-control">Add
+                                    System
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" data-dismiss="modal"
+                                    class="btn-small btn-danger form-control">Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

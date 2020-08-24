@@ -1,0 +1,28 @@
+#table-get-job-requests tbody tr:hover,
+#table-get-user tbody tr:hover,
+#table-job-category tbody tr:hover, 
+#table-get-job-items tbody tr:hover,
+#table-employee tbody tr:hover,
+#table-hardwareItems tbody tr:hover,
+#table-get-jobOrdersForReview tbody tr:hover,
+#table-job-itemsFromCategories tbody tr:hover { 
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+#table-get-job-requests tbody tr:hover > .sorting_1,
+#table-get-user tbody tr:hover > .sorting_1,
+#table-job-category tbody tr:hover > .sorting_1,
+#table-get-job-items tbody tr:hover > .sorting_1,
+#table-employee tbody tr:hover > .sorting_1,
+#table-hardwareItems tbody tr:hover > .sorting_1,
+#table-get-jobOrdersForReview tbody tr:hover > .sorting_1,
+#table-job-itemsFromCategories tbody tr:hover > .sorting_1  { 
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.a-jobLink {
+  text-decoration: underline;
+}
+

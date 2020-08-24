@@ -1,0 +1,87 @@
+{
+    "title": "SB Admin 2",
+    "name": "startbootstrap-sb-admin-2",
+    "version": "4.0.4",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js",
+        "build": "webpack",
+        "start-server": "node app.js"
+    },
+    "description": "An open source Bootstrap 4 admin theme.",
+    "keywords": [
+        "css",
+        "sass",
+        "html",
+        "responsive",
+        "theme",
+        "template",
+        "admin",
+        "app"
+    ],
+    "homepage": "https://startbootstrap.com/template-overviews/sb-admin-2",
+    "bugs": {
+        "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues",
+        "email": "feedback@startbootstrap.com"
+    },
+    "license": "MIT",
+    "author": "Start Bootstrap",
+    "contributors": [
+        "David Miller (http://davidmiller.io/)"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
+    },
+    "dependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+        "@babel/polyfill": "^7.8.7",
+        "@fortawesome/fontawesome-free": "5.8.2",
+        "aes256": "^1.0.4",
+        "body-parser": "^1.18.3",
+        "bootstrap": "4.3.1",
+        "chart.js": "2.8.0",
+        "clientside-require": "^4.7.2",
+        "connect-mssql": "^1.5.0",
+        "core-js": "^3.6.5",
+        "datatables.net": "^1.10.20",
+        "datatables.net-bs4": "1.10.19",
+        "datatables.net-dt": "^1.10.20",
+        "ejs": "^2.6.1",
+        "express": "^4.17.1",
+        "express-session": "^1.16.2",
+        "express-validator": "^6.2.0",
+        "jquery": "3.4.1",
+        "jquery.easing": "^1.4.1",
+        "mssql": "^5.1.0",
+        "multer": "^1.4.2",
+        "nodemailer": "^6.3.0",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0",
+        "sql-query": "^0.1.27",
+        "validator": "^12.1.0",
+        "xml2js": "^0.4.19"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.6",
+        "@babel/plugin-transform-arrow-functions": "^7.8.3",
+        "@babel/preset-env": "^7.9.6",
+        "babel-loader": "^8.1.0",
+        "browser-sync": "^2.26.7",
+        "del": "4.1.1",
+        "gulp": "4.0.2",
+        "gulp-autoprefixer": "6.1.0",
+        "gulp-clean-css": "4.2.0",
+        "gulp-header": "2.0.7",
+        "gulp-plumber": "^1.2.1",
+        "gulp-rename": "1.4.0",
+        "gulp-sass": "4.0.2",
+        "gulp-uglify": "3.0.2",
+        "merge-stream": "^1.0.1",
+        "nodemon": "^1.18.3",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11"
+    }
+}

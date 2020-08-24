@@ -1,0 +1,77 @@
+<div class="modal fade" id="modal-software-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="POST" action="/misc/software" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">
+                        Add New Software
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <input type="hidden" name="softwareId" id="inph-softwareId" />
+                            <label for="inpt-softwareInitial" class="col-sm-3 col-form-label">Software Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="softwareName" id="inpt-softwareName"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-softwareName" class="col-sm-3 col-form-label">Software Description</label>
+                            <div class="col-sm-9">
+                                <textarea name="softwareDescription" class="form-control" id="inpt-softwareDescription"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-softwareName" class="col-sm-3 col-form-label">Remarks</label>
+                            <div class="col-sm-9">
+                                <textarea name="softwareRemarks" class="form-control" id="inpt-softwareRemarks"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-referenceStatus" class="col-sm-3 col-form-label">Software Status</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="form-control" name="softwareStatus"
+                                    id="sel-referenceStatus"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-subCategory" class="col-sm-3 col-form-label">SubCategory</label>
+                            <div class="col-sm-9">
+                                <select type="text" class="form-control" name="softwareCategory"
+                                    id="sel-subCategory"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="smallButtons">
+                            <div class="col-sm-6">
+                                <button type="submit" id="btn-submit-software"
+                                    class="btn-small btn-success form-control">
+                                    Add Software
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" data-dismiss="modal" class="btn-small btn-danger form-control">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="bigButton">
+                            <div class="col-sm-12">
+                                <button type="button" data-dismiss="modal" class="btn-small btn-danger form-control">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

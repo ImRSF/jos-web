@@ -1,0 +1,60 @@
+.user-detail-main {
+  background: #f5f5f5;
+}
+.profile-back {
+  height: 225px;
+  background-image: url("https://images.fineartamerica.com/images-medium-large-5/3-abstract-technical-background-trafficanalyzer.jpg");
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+}
+.profile-back img {
+  height: 120px;
+  width: 120px;
+  margin-top: 165px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.user-detail {
+  padding-top: 65px;
+}
+.user-detail button {
+  font-size: 12px;
+}
+#accordionMyStory .card-header {
+  border-top: 5px solid #00b5ec;
+}
+#accordionMyPlan .card-header {
+  border-top: 5px solid #32b92d;
+}
+#accordionMyTasks .card-header {
+  border-top: 5px solid #8e44ad;
+}
+#accordionUserInfo .card-header {
+  border-top: 5px solid #c82333;
+}
+#accordionSocialStatistics .card-header {
+  border-top: 5px solid #00aaa0;
+}
+#accordionSaleStatistics .card-header {
+  border-top: 5px solid #7b8d8e;
+}
+.card-header h6 {
+  display: inline-block;
+}
+.card-header a {
+  cursor: pointer;
+}
+.card-body p {
+  font-size: 14px;
+}
+
+@media (min-width: 320px) and (max-width: 640px) {
+  .accordion-group-one {
+    padding-left: 15px !important;
+  }
+  .accordion-group-three {
+    padding-right: 15px !important;
+  }
+}

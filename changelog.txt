@@ -1,0 +1,13 @@
+Version: 2.0.1
+
+~ Changes ~
+1. Removed employees that are no longer working in Alsons
+2. Fixed duplicate email issue in ISS Accounts after assigning JO
+3. Added Manager usergroup
+4. Fixed issue in which certain employees are not present in RequestedBy
+
+~ Added Features ~
+1. Manager User Group
+
+
+~ Requests ~

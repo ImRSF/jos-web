@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+<!-- Library CSS -->
+<link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../vendor/Buttons-1.5.6/css/buttons.dataTables.min.css">
+
+<!-- Custom styles for this page -->
+<link rel="stylesheet" href="../css/custom/dataTables-custom.css">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="form-group row">
+            <label for="sel-personnel-filter" class="col-sm-2 col-form-label">ISS Employee</label>
+            <div class="col-sm-4">
+              <!-- <h5 class="h5">Filters</h5> -->
+              <select type="text" id="sel-personnel-filter" data-filter="PersonnelID" class="form-control">
+                <option value="" selected>ALL PERSONNEL</option>
+                <% for (let personnel of personnelList) {%>
+                <option value="<%= personnel.PersonnelID %>"><%= personnel.PersonnelName %></option>
+                <% } %>
+              </select>
+            </div>
+            <label for="sel-personnel-filter" class="col-sm-2 col-form-label">Company</label>
+            <div class="col-sm-4">
+              <select type="text" id="sel-company-filter" data-filter="CompanyID" class="form-control">
+                <option value="" selected>ALL COMPANIES</option>
+                <% for (let company of companyList) {%>
+                <option value="<%= company.CompanyID %>"><%= company.CompanyInitial %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <!-- <div class="form-group row personnel--filter">
+
+          </div> -->
+          <!-- <hr> -->
+          <div class="form-group row">
+            <label for="inpd-deadline" class="col-sm-2 col-form-label">Date Begin</label>
+            <div class="col-sm-4">
+              <input type="date" id="inpd-dateBeginJO-filter" data-filter="DateBegin" name="joDeadline"
+                class="form-control" id="inpd-deadline">
+            </div>
+            <label for="inpd-deadline" class="col-sm-2 col-form-label">Date End</label>
+            <div class="col-sm-4">
+              <input type="date" id="inpd-dateEndJO-filter" data-filter="DateEnd" name="joDeadline" class="form-control"
+                id="inpd-deadline">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button type="button" class="btn-small btn-success form-control text-center" id="btn-resetFilter">Reset
+                Filters</button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn-small btn-primary form-control text-center"
+                id="btn-generateJOSummary">Generate
+                Report</button>
+            </div>
+          </div>
+          <hr>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Job Order Summary</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered display" id="table-jobOrder-summary" style="width: 100%" width="100%"
+                  cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th><strong>JO Number</strong></th>
+                      <th><strong>Requested By</strong></th>
+                      <th><strong>Assigned To</strong></th>
+                      <th><strong>Status</strong></th>
+                      <th><strong>Date Requested</strong></th>
+                      <th><strong>Duration</strong></th>
+                      <th><strong>Job Request</strong></th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%- include('../includes/footer.ejs') %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Dependencies -->
+  <%- include('../includes/modal-user-list.ejs') %>
+  <%- include('../includes/modal-logout.ejs') %>
+
+  <!-- Bootstrap core JavaScript-->
+  <%- include('../includes/main-js.ejs') %>
+  <!-- Page level plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.debug.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.plugin.autotable.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.flash.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script src="../vendor/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../vendor/JSZip-2.5.0/jszip.min.js"></script> 
+  <script src="../vendor/pdfmake-0.1.36/vfs_fonts.js"></script>
+
+  <!-- Page level custom scripts -->
+
+  <!-- Custom JavaScript -->
+  <!-- Production -->
+  <script src="../js/custom/stats/rpt-jobOrder-summary.bundle.js"></script>
+  <script src="../js/custom/stats/jobOrderSummary.bundle.js"></script>
+  <script src="../js/custom/user-list.bundle.js"></script>
+
+  <!-- Development -->
+  <!-- <script type="module" src="../js/custom/stats/rpt-jobOrder-summary.js"></script>
+  <script type="module" src="../js/custom/stats/jobOrderSummary.js"></script>
+  <script type="module" src="../js/custom/user-list.js"></script> -->
+
+</body>
+
+</html>

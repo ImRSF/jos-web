@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../includes/head.ejs') %>
+  <!-- Custom styles for this page -->
+  <link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../css/custom/dataTables-custom.css">
+  <link rel="stylesheet" href="../vendor/Buttons-1.5.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../vendor/select.dataTables.min.css">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <% if (user[0].UserGroupName === "Admin") { %>
+          <button type="button" class="btn-large btn-primary btn-icon-split" id="btn-addJobOrder" data-toggle="modal">
+            <span class="icon text-white-50">
+              <i class="fas fa-plus-square"></i> 
+            </span>
+            <span class="text">Add Job Order</span>
+          </button>
+          <% } %>
+          <hr>
+          <!-- DataTables Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Job Orders</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered display"  id="table-job-order" style="width: 100%" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><strong>Job ID</strong></th>
+                      <th><strong>JO Number</strong></th>
+                      <th><strong>Requested By</strong></th>
+                      <th><strong>Status</strong></th>
+                      <th><strong>Priority</strong></th>
+                      <th><strong>Assigned To</strong></th>
+                      <th><strong>Actions</strong></th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%- include('../includes/footer.ejs') %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+  
+  <!-- Modals -->
+  <%- include('../includes/modal-logout.ejs') %>
+  <%- include('../includes/modal-user-list.ejs') %>
+  <%- include('./modal-confirm-delete-jobOrder.ejs') %>
+  <%- include('./modal-approved-job-request.ejs') %>
+  <%- include('./modal-job-category.ejs') %>
+  <%- include('./modal-job-order-form.ejs') %>
+  <%- include('./modal-job-items-list.ejs') %>
+  <%- include('../auth/modal-employee-list.ejs') %>
+  
+  <!-- Bootstrap core JavaScript-->
+  <%- include('../includes/main-js.ejs') %> 
+
+  <!-- Page level plugins -->
+
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables-select-1.10.16.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.debug.min.js"></script>
+  <script src="../vendor/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../vendor/JSZip-2.5.0/jszip.min.js"></script> 
+  <script src="../vendor/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.flash.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.plugin.autotable.min.js"></script>
+  <!-- <script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.10/js/dataTables.checkboxes.min.js"></script> -->
+  <script src="../vendor/datatables/dataTables.checkboxes.min.js"></script>
+
+  <!-- Page level custom scripts -->
+
+  <!-- Custom JavaScript -->
+
+  <!-- Production -->
+  <!-- <script src="../js/custom/misc.js"></script>
+  <script src="../js/custom/jobs/table-job-category.js"></script> 
+  <script src="../js/custom/jobs/table-job-order.js"></script>
+  <script src="../js/custom/jobs/table-approvedJobRequests.js"></script>
+  <script src="../js/custom/jobs/table-job-item.js"></script>  
+  <script src="../js/custom/jobs/job-order.js"></script>
+  <script src="../js/custom/user-list.js"></script> 
+  <script src="../js/custom/jobs/job-items.js"></script>  -->
+  <!-- <script src="https://parsleyjs.org/dist/parsley.min.js"></script> -->
+
+  <!-- Development -->
+  <script type="module" src="../js/custom/misc.js"></script>
+  <script type="module" src="../js/custom/jobs/table-job-category.js"></script> 
+  <script type="module" src="../js/custom/jobs/table-job-order.js"></script>
+  <script type="module" src="../js/custom/jobs/table-approvedJobRequests.js"></script>
+  <script type="module" src="../js/custom/jobs/table-job-item.js"></script>  
+  <script type="module" src="../js/custom/jobs/job-order.js"></script>
+  <script type="module" src="../js/custom/user-list.js"></script> 
+  <script type="module" src="../js/custom/jobs/job-items.js"></script> 
+  <!-- <script src="https://parsleyjs.org/dist/parsley.min.js"></script> -->
+
+</body>
+
+</html>

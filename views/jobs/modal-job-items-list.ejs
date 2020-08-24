@@ -1,0 +1,53 @@
+<div class="modal fade" id="modal-job-items" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Job Items</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="form-group row ">
+            <input type="hidden" id="inph-employeeNo" name="employeeNo">
+            <div class="col-sm-4" id="inpg-employee">
+              <div class="input-group mb-3">
+                <input id="inpt-employeeInitial" type="text" class="form-control" readonly placeholder="Select Employee"
+                  aria-label="Employee's Initial" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button id="btn-getEmployee" class="btn-sm btn-outline-success" type="button"><i
+                      class="fas fa-search affix grey-text"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered display" id="table-get-job-items" style="width: 100%" width="100%"
+              cellspacing="0">
+              <thead>
+                <tr>
+                  <th><strong>JobItemID</strong></th>
+                  <th><strong>Item Name</strong></th>
+                  <th><strong>Sub Category ID</strong></th>
+                  <th><strong>Item Description</strong></th>
+                  <th><strong>Remarks</strong></th>
+                  <th><strong>Company</strong></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-sm btn-danger" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn-sm btn-primary" id="btn-addJobItems" type="button">Add Selected Items</a>
+          <button class="btn-sm btn-success" id="btn-addSelectedPeripheral" type="button" hidden>Add Selected
+            Peripheral</a>
+            <button class="btn-sm btn-secondary" id="btn-addSelectedWorkStation" type="button" hidden>Add Selected
+              WorkStation</a>
+      </div>
+    </div>
+  </div>
+</div>

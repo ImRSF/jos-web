@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+<link rel="stylesheet" href="../css/custom/rating.css">
+<link rel="stylesheet" href="../css/custom/dataTables-custom.css">
+
+<!-- Custom styles for this page -->
+<link rel="stylesheet" href="../vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../vendor/Buttons-1.5.6/css/buttons.dataTables.min.css">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../includes/sidebar.ejs') %>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%- include('../includes/topbar.ejs') %>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <% if (user[0].UserGroupName === "User" || user[0].UserGroupName === "Approver") { %>
+          <button type="button" class="btn-large btn-primary btn-icon-split" id="btn-addJobRequest">
+            <span class="icon text-white-50">
+              <i class="fas fa-plus-square"></i>
+            </span>
+            <span class="text">Add Job Request</span>
+          </button>
+          <% } %>
+          <hr>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Job Requests</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered display" id="table-job-request" style="width: 100%" width="100%"
+                  cellspacing="0">
+                  <thead>
+                    <tr>
+                      <!-- <th></th> -->
+                      <th><strong>Request ID</strong></th>
+                      <th><strong>Request Number</strong></th>
+                      <th><strong>Requested By</strong></th>
+                      <th><strong>Request Status</strong></th>
+                      <th><strong>Date Sent</strong></th>
+                      <th><strong>Actions</strong></th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="inp-userGroupName" value="<%= user[0].UserGroupName %>">
+        <!-- /.container-fluid -->
+      </div>
+
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <%- include('../includes/footer.ejs') %>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <%- include('../includes/modal-logout.ejs') %>
+  <%- include('../includes/modal-user-list.ejs') %>
+  <%- include('./modal-job-request-form.ejs') %>
+  <%- include('./modal-job-review-form.ejs') %>
+  <%- include('./modal-confirm-jobRequest.ejs') %>
+  <%- include('./modal-employee-list') %>
+
+  <!-- Bootstrap core JavaScript-->
+  <%- include('../includes/main-js.ejs') %>
+  <!-- Page level plugins -->
+  <!-- FIXME: Error when exporting to PDF -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.responsive.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.debug.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.flash.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../vendor/Buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script src="../vendor/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../vendor/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="../vendor/jsPDF/jspdf.plugin.autotable.min.js"></script>
+
+  <!-- Page level custom scripts -->
+
+  <!-- Custom JavaScript -->
+
+  <!-- Production -->
+  <!-- <script src="../js/custom/misc.js"></script>
+  <script src="../js/custom/stats/rpt-jobRequest-detailed.js"></script>
+  <script src="../js/custom/jobs/table-job-request.js"></script>
+  <script src="../js/custom/jobs/table-employee.js"></script>
+  <script src="../js/custom/jobs/job-request.js"></script>
+  <script src="../js/custom/jobs/job-review.js"></script>
+  <script src="../js/custom/user-list.js"></script>
+  <script src="../js/custom/jobs/rating.js"></script> -->
+
+  <!-- Development -->
+  <script type="module" src="../js/custom/misc.js"></script>
+  <script type="module" src="../js/custom/stats/rpt-jobRequest-detailed.js"></script>
+  <script type="module" src="../js/custom/jobs/table-job-request.js"></script>
+  <script type="module" src="../js/custom/jobs/table-employee.js"></script>
+  <script type="module" src="../js/custom/jobs/job-request.js"></script>
+  <script type="module" src="../js/custom/jobs/job-review.js"></script>
+  <script type="module" src="../js/custom/user-list.js"></script>
+  <script type="module" src="../js/custom/jobs/rating.js"></script>
+
+</body>
+
+</html>

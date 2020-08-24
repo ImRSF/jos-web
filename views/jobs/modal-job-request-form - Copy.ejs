@@ -1,0 +1,158 @@
+<!-- <link href="/vendor/mdbootstrap/css/mdb.min.css" rel="stylesheet" type="text/css"> -->
+<div class="modal fade" id="modal-job-request-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="frm-jobRequest" method="POST" action="/jobs/job-requests" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold" id="h4-jobRequest">Job Request Form</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <input type="hidden" name="requestId" id="inph-requestId">
+          <input type="hidden" name="submittedFrom" id="inph-submittedFrom">
+          <input type="hidden" name="requestorId" id="inph-requestorId">
+          <input type="hidden" name="requestedByEmail" id="inph-requestedByEmail">
+          <input type="hidden" name="requestedByCompany" id="inph-requestedByCompany">
+          <input type="hidden" name="requestedByDepartment" id="inph-requestedByDepartment">
+          <input type="hidden" name="requestedBySection" id="inph-requestedBySection">
+          <input type="hidden" name="lastStatus" id="inph-lastStatus">
+          <input type="hidden" name="requestedBy" id="inph-requestedBy">
+          <input type="hidden" name="approvedBy" id="inph-approvedBy">
+
+          <div class="md-form">
+            <div class="md-form row">
+              <div class="md-form col" id="shit">
+                <span class="do-validation">
+                  <h6><strong>Job Request Number</strong></h6>
+                  <input data-parsley-max="2" data-parsley-min="1" type="text" id="inpt-requestNumber"
+                    class="form-control" name="requestNumber" readonly>
+                </span>
+              </div>
+              <div class="md-form col" id="joNumber">
+                <span class="do-validation">
+                  <h6><strong>Attached JO</strong></h6>
+                  <div class="input-group">
+                    <input type="text" id="inpt-joNumber" class="form-control" readonly>
+                    <i id="img-viewJODetailedReport" class="fas fa-file-pdf affix grey-text"></i>
+                  </div>
+                </span>
+                <div class="test"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form" hidden>
+            <div class="md-form row">
+              <div class="md-form col">
+                <h6><strong>Date Sent</strong></h6>
+                <input type="date" class="form-control isValidDate" id="inpd-dateSent" name="dateSent" readonly>
+              </div>
+              <div class="md-form col" id="dateApproved">
+                <h6><strong>Date <span id="t-statusName"></span></strong></h6>
+                <input type="date" class="form-control isValidDate" id="inpd-dateApproved" name="dateApproved" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="md-form">
+            <h6><strong>Requested By</strong></h6>
+            <span class="do-validation"></span>
+            <div class="input-group mb-3">
+              <input data-parsley-max="2" id="inpt-requestedBy" type="text" class="form-control"
+                aria-label="Requested By" aria-describedby="basic-addon2" readonly required>
+              <i id="img-viewEmployeeList" class="fas fa-search affix grey-text"></i>
+            </div>
+            </span>
+          </div>
+          <div class="md-form">
+            <h6 id="txt-toBeApproved"><strong>To be Approved By</strong></h6>
+            <span class="do-validation"></span>
+            <div class="input-group mb-3">
+              <input id="inpt-approvedBy" type="text" class="form-control"
+                aria-label="Requested By" aria-describedby="basic-addon2" readonly required>
+              <i id="img-viewApproverList" class="fas fa-search affix grey-text viewPersonnelList" data-personnel="Approver"></i>
+            </div>
+            </span>
+          </div>
+          <!-- TODO: Remove Workgroup -->
+          <div class="md-form">
+            <h6><strong>Workgroup (Company-Department--Section)</strong></h6>
+            <div class="input-group">
+              <input data-parsley-max="2" id="inpt-requestedByWorkplace" type="text" class="form-control"
+                aria-label="Workplace" aria-describedby="basic-addon2" readonly>
+            </div>
+            <div class="test"></div>
+          </div>
+          <div class="md-form">
+            <div class="md-form row">
+              <div class="md-form col">
+                <h6><strong>Contact Number</strong></h6>
+                <div class="input-group">
+                  <input data-parsley-max="2" id="inpt-contactNo" name="contactNo" type="text" class="form-control"
+                    aria-label="Contact Number" required pattern="^[0-9]*$" title="Please input a number only"
+                    aria-describedby="basic-addon2">
+                </div>
+              </div>
+              <div class="md-form col">
+                <h6><strong>Status</strong></h6>
+                <div class="input-group">
+                  <input id="inpt-statusName" type="text" class="form-control" aria-label="Status"
+                    aria-describedby="basic-addon2" readonly>
+                </div>
+              </div>
+            </div>
+
+            <div class="test"></div>
+          </div>
+          <div class="md-form">
+            <h6><strong>Subject</strong></h6>
+            <input data-parsley-max="2" type="text" id="inpt-subject" class="form-control validate" name="subject"
+              required>
+          </div>
+          <div class="md-form">
+            <h6><strong>Description</strong></h6>
+            <textarea type="text" id="txt-description" class="md-textarea form-control" name="description" rows="4"
+              required></textarea>
+          </div>
+
+          <div class="md-form form-group" id="jr-attachedFile">
+            <h6><strong>Attached File(s)</strong></h6>
+          </div>
+          <div class="md-form form-group" id="f-jobRequest">
+            <div class="md-form">
+              <input type="file" multiple class="form-control-file" id="inpf-jobRequest" name="file-jobRequest">
+              <!-- <sub class="text-success">Maximum of 5 files only</sub> -->
+            </div>
+          </div>
+        </div>
+        <div class="md-form form-group row">
+          <div class="col-sm-6">
+            <div class="modal-footer approveButton">
+              <button type="submit" name="jobStatus" value="1" data-confirm-action="submit" id="btn-submit-jobRequest"
+                class="btn-sm btn-primary form-control withConfirmation">Submit</button>
+              <button type="submit" name="jobStatus" value="6" data-confirm-action="approve" id="btn-approve-jobRequest"
+                class="btn-sm btn-success form-control withConfirmation">Approve</button>
+              <button type="submit" name="jobStatus" value="4" data-confirm-action="cancel" id="btn-cancel-jobRequest"
+                class="btn-sm btn-warning form-control withConfirmation">Cancel</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="modal-footer cancelButton">
+              <button type="button" id="btn-smallExit" data-dismiss="modal" aria-label="Close"
+                class="btn-sm btn-danger form-control">Close</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" aria-label="Close" id="btn-bigExit"
+              class="btn-sm btn-danger form-control">Close</button>
+          </div>
+        </div>
+      </div>
+  </div>
+  </form>
+</div>
+</div>

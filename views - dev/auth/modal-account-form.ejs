@@ -1,0 +1,122 @@
+<!--FIXME: Fix profile image placement-->
+<div class="modal fade" id="modal-account-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <form method="POST" action="/auth/edit-account" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">User Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <img style="width: 95px;height: 95px;" id="img-accountImage" alt="Account Image">
+                            <input type="hidden" name="personnelId" id="inph-acctId">
+                            <input type="hidden" value="Update" name="mode" id="inph-acctMode">
+                            <input type="hidden" id="inph-accountImage" name="accountImage">
+                            <input type="hidden" id="inph-submittedFrom" name="submittedFrom">
+                            <label for="inpt-fName" class="col-sm-1 col-form-label">First Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="fName" class="form-control" id="inpt-fName">
+                            </div>
+                            <label for="inpt-mName" class="col-sm-1 col-form-label">Middle Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="mName" class="form-control" id="inpt-mName"></input>
+                            </div>
+                            <label for="inpt-lName" class="col-sm-1 col-form-label">Last Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="lName" class="form-control" id="inpt-lName"></input>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sel-company" class="col-sm-1 col-form-label">Company</label>
+                            <div class="col-sm-3">
+                                <select type="text" name="company" disabled class="form-control" id="sel-company"></select>
+                            </div>
+                            <label for="sel-department" class="col-sm-1 col-form-label">Department</label>
+                            <div class="col-sm-3">
+                                <select type="text" name="department" disabled class="form-control"
+                                    id="sel-department"></select>
+                            </div>
+                            <label for="sel-section" class="col-sm-1 col-form-label">Section</label>
+                            <div class="col-sm-3">
+                                <select type="text" name="section" disabled class="form-control"
+                                    id="sel-section"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-position" class="col-sm-1 col-form-label">Position</label>
+                            <div class="col-3">
+                                <input type="text" name="position" class="form-control" id="inpt-position"></input>
+                            </div>
+                            <label for="inpe-email" class="col-sm-1 col-form-label">Email</label>
+                            <div class="col-sm-3">
+                                <input type="email" name="email" class="form-control" id="inpe-email"></input>
+                            </div>
+                            <label for="sel-userGroup" class="col-sm-1 col-form-label">User Group</label>
+                            <div class="col-3">
+                                <select type="text" name="userGroup" disabled class="form-control"
+                                    id="sel-userGroup"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpt-username" class="col-sm-1 col-form-label">Username</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="username" class="form-control" id="inpt-username"></input>
+                            </div>
+                            <label for="sel-gender" class="col-sm-1 col-form-label">Gender</label>
+                            <div class="col-sm-3">
+                                <select type="text" name="gender" class="form-control" id="sel-gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <label for="sel-accountStatus" class="col-sm-1 col-form-label">Status</label>
+                            <div class="col-sm-3">
+                                <select type="text" name="accountStatus" disabled class="form-control" id="sel-accountStatus">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inpp-password" class="col-sm-1 col-form-label">Password</label>
+                            <div class="col-sm-5">
+                                <input type="password" name="password" class="form-control" id="inpp-password">
+                            </div>
+                            <label for="inpp-confirmPassword" class="col-sm-1 col-form-label">Confirm Password</label>
+                            <div class="col-sm-5">
+                                <input type="password" name="confirmPassword" class="form-control" id="inpp-confirmPassword">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txt-accountDescription" class="col-sm-1 col-form-label">Description</label>
+                        <div class="col-sm-11">
+                            <textarea class="form-control" id="txt-accountDescription" name="accountDescription"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="file" class="custom-file-input form-control" id="inpf-accountImage" name="file-accountImage">
+                            <label class="custom-file-label col-form-label" for="inpf-accountImage">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <button type="submit" id="btn-submit-account" class="btn btn-unique form-control">Save <i
+                                    class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" id="btn-cancel-account" data-dismiss="modal" class="btn btn-danger form-control">Cancel <i
+                                    class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
