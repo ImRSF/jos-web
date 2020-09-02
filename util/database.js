@@ -24,7 +24,7 @@ const devServer = {
   port: 1439  
 };
 
-const config = prodServer
+const config = prodServer;
 
 const pool = new mssql.ConnectionPool(config)
   .connect()
