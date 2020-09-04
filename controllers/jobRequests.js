@@ -104,7 +104,6 @@ exports.postJobRequests = async (req, res) => {
   const jobRequestNo = await JobRequest.getJobRequestNumber();
   await jobRequest.sendEmailForJobRequest(request.requestedByName);
   await Misc.insertFiles(jobRequestNo[0].JobRequestNumber, null, req.files["file-jobRequest"]);
-  // req.rawHeaders[25].split("statusID=")[1]
-  // Misc.insertFile(request.requestNumber, null, file.originalname, file.filename, file.mimetype, file.path)
+  
   return res.redirect("/jobs/job-requests");
 };
