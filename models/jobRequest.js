@@ -139,14 +139,14 @@ module.exports = class JobRequest {
   //         "A Job Request from " +
   //         getUser[0].PersonnelName +
   //         " is waiting to be assigned a Job Order",
-  //         jobRequestLink
+  //         jobRequestLink 
   //       );
   //       break;
-  //   }
+  //   }  
   // }
 
   async sendEmailForJobRequest(requestedByName) {
-    const serverDefaults = await Misc.getServerDefaults("Production");
+    const serverDefaults = await Misc.getServerDefaults("Development");
 
     const jobRequestLink =
       `Please click the following link to view it in detail.<br>http://${serverDefaults[0].ServerIP}:${serverDefaults[0].PortNumber}/jobs/job-request?requestNumber=` +

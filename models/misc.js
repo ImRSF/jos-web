@@ -52,7 +52,11 @@ module.exports = class Miscellaneous {
   }
 
   static async getCategory(columnName = null, searchVal = null) {
-    return await DbControl.getRecords(columnName, searchVal, "spSelect_Category");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "spSelect_Category"
+    );
   }
 
   static async getCategoryOnly(columnName = null, searchVal = null) {
@@ -75,16 +79,19 @@ module.exports = class Miscellaneous {
   static async getCategoryItemForHardware(hardwareOption, employeeNo) {
     const categoryItemParamList = [
       { name: "HardwareOption", value: hardwareOption },
-      { name: "EmployeeNo", value: employeeNo }
+      { name: "EmployeeNo", value: employeeNo },
     ];
-    return await DbControl.executeSP("devRef_spSelect_CategoryItemForHardware", categoryItemParamList);
+    return await DbControl.executeSP(
+      "devRef_spSelect_CategoryItemForHardware",
+      categoryItemParamList
+    );
   }
 
   static async getStatus(personnelId, assignedTo, userGroupId) {
     const statusParamList = [
       { name: "PersonnelID", value: personnelId },
       { name: "AssignedTo", value: assignedTo },
-      { name: "UserGroupID", value: userGroupId }
+      { name: "UserGroupID", value: userGroupId },
     ];
     return await DbControl.executeSP("spSelect_Status", statusParamList);
   }
@@ -94,7 +101,11 @@ module.exports = class Miscellaneous {
   }
 
   static async getNetwork(columnName = null, searchVal = "") {
-    return await DbControl.getRecords(columnName, searchVal, "spSelect_Network");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "spSelect_Network"
+    );
   }
 
   static async getSystem(columnName = null, searchVal = "") {
@@ -102,7 +113,11 @@ module.exports = class Miscellaneous {
   }
 
   static async getSoftware(columnName = null, searchVal = "") {
-    return await DbControl.getRecords(columnName, searchVal, "spSelect_Software");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "spSelect_Software"
+    );
   }
 
   static async getHardware(columnName = null, searchVal = "") {
@@ -114,11 +129,19 @@ module.exports = class Miscellaneous {
   }
 
   static async getMiscellaneous(columnName = null, searchVal = "") {
-    return await DbControl.getRecords(columnName, searchVal, "spSelect_MiscItem");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "spSelect_MiscItem"
+    );
   }
 
   static async getEmployee(columnName = null, searchVal = "") {
-    return await DbControl.getRecords(columnName, searchVal, "spSelect_Employee");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "spSelect_Employee"
+    );
   }
 
   static async getEmployeeWithWorkstation() {
@@ -127,39 +150,65 @@ module.exports = class Miscellaneous {
 
   static async getAssignedCategory(categoryId = null) {
     let html = "";
-    const getAssignedCategories = await DbControl.getRecords("AssignedUserID", categoryId, "devRef_spSelect_ISSCategories");
+    const getAssignedCategories = await DbControl.getRecords(
+      "AssignedUserID",
+      categoryId,
+      "devRef_spSelect_ISSCategories"
+    );
     if (categoryId) {
       html += `<span class="mr-3">Job Categories</span>`;
       for (let category in getAssignedCategories[0]) {
         if (getAssignedCategories[0][category]) {
           html += `<div class="form-check form-check-inline">
-          <input class="form-check-input category-item" checked name="assignedCategory[${category.split("Is").pop().toUpperCase()}]" type="checkbox"
+          <input class="form-check-input category-item" checked name="assignedCategory[${category
+            .split("Is")
+            .pop()
+            .toUpperCase()}]" type="checkbox"
             value="1">
-          <label class="form-check-label" for="inlineCheckbox1">${category.split("Is").pop().toUpperCase()}</label>
-        </div>`
+          <label class="form-check-label" for="inlineCheckbox1">${category
+            .split("Is")
+            .pop()
+            .toUpperCase()}</label>
+        </div>`;
         } else {
           html += `<div class="form-check form-check-inline">
-            <input class="form-check-input category-item" name="assignedCategory[${category.split("Is").pop().toUpperCase()}]" type="checkbox"
+            <input class="form-check-input category-item" name="assignedCategory[${category
+              .split("Is")
+              .pop()
+              .toUpperCase()}]" type="checkbox"
               value="1">
-            <label class="form-check-label" for="inlineCheckbox1">${category.split("Is").pop().toUpperCase()}</label>
-          </div>`
+            <label class="form-check-label" for="inlineCheckbox1">${category
+              .split("Is")
+              .pop()
+              .toUpperCase()}</label>
+          </div>`;
         }
       }
-      return html
+      return html;
     } else {
       for (let category in getAssignedCategories[0]) {
         html += `<div class="form-check form-check-inline">
-          <input class="form-check-input category-item" name="assignedCategory[${category.split("Is").pop().toUpperCase()}]" type="checkbox"
+          <input class="form-check-input category-item" name="assignedCategory[${category
+            .split("Is")
+            .pop()
+            .toUpperCase()}]" type="checkbox"
             value="1">
-          <label class="form-check-label" for="inlineCheckbox1">${category.split("Is").pop().toUpperCase()}</label>
-        </div>`
+          <label class="form-check-label" for="inlineCheckbox1">${category
+            .split("Is")
+            .pop()
+            .toUpperCase()}</label>
+        </div>`;
       }
       return html;
     }
   }
 
   static async getAssignedCategoriesLink(x) {
-    const getAssignedCategories = await DbControl.getRecords("AssignedUserID", x, "devRef_spSelect_ISSCategories");
+    const getAssignedCategories = await DbControl.getRecords(
+      "AssignedUserID",
+      x,
+      "devRef_spSelect_ISSCategories"
+    );
     let html = "";
     for (let category in getAssignedCategories[0]) {
       let categoryItem = category.split("Is").pop().toLowerCase();
@@ -175,7 +224,11 @@ module.exports = class Miscellaneous {
   }
 
   static async getHardwareItem(columnName = null, searchVal = "") {
-    return await DbControl.getRecords(columnName, searchVal, "devRef_spSelect_HardwareItem");
+    return await DbControl.getRecords(
+      columnName,
+      searchVal,
+      "devRef_spSelect_HardwareItem"
+    );
   }
 
   static async insertFile(
@@ -192,7 +245,7 @@ module.exports = class Miscellaneous {
       { name: "OriginalName", value: origName },
       { name: "FileName", value: fileName },
       { name: "MimeType", value: mimeType },
-      { name: "FilePath", value: filePath }
+      { name: "FilePath", value: filePath },
     ];
     await DbControl.executeSP("devRef_spInsert_File", fileParamList);
   }
@@ -205,8 +258,8 @@ module.exports = class Miscellaneous {
         { name: "OriginalName", value: element.originalname },
         { name: "FileName", value: element.filename },
         { name: "MimeType", value: element.mimetype },
-        { name: "FilePath", value: element.path }
-      ]; 
+        { name: "FilePath", value: element.path },
+      ];
       await DbControl.executeSP("spInsert_File", fileParamList);
     });
   }
@@ -214,12 +267,18 @@ module.exports = class Miscellaneous {
   static async insertISSCategory(personnelId = null, assignedCategory) {
     const categoryParamList = [];
     for (let category in assignedCategory) {
-      const categoryParams = { name: category, value: assignedCategory[category] };
+      const categoryParams = {
+        name: category,
+        value: assignedCategory[category],
+      };
       categoryParamList.push(categoryParams);
     }
     const personnelIdParam = { name: "AssignedUser", value: personnelId };
     categoryParamList.push(personnelIdParam);
-    await DbControl.executeSP("devRef_spInsert_ISSCategories", categoryParamList);
+    await DbControl.executeSP(
+      "devRef_spInsert_ISSCategories",
+      categoryParamList
+    );
   }
 
   static async sendEmail(toEmail = [], subject, htmlContent = "") {
@@ -227,8 +286,8 @@ module.exports = class Miscellaneous {
       service: "gmail",
       auth: {
         user: "rsflores@saranganibay.com.ph",
-        pass: "rsflores2019"
-      }
+        pass: "rsflores2019",
+      },
     });
     const mailOptions = {
       from: "Job Order System", // sender address
@@ -240,7 +299,7 @@ module.exports = class Miscellaneous {
              <br><br>Thank you.<br><strong>ISS Department</strong>
              <br>
              <h4 style="color: #6767FF">This is a system generated email. Please do not reply to this message.</h4>
-             ` // plain text body
+             `, // plain text body
     };
     emailTransporter.sendMail(mailOptions, function (err, info) {
       if (err) console.log(err);
@@ -256,7 +315,15 @@ module.exports = class Miscellaneous {
     return null;
   }
 
-  static async insertNetwork(userId, networkId = null, name, description, remarks, status, subCategory) {
+  static async insertNetwork(
+    userId,
+    networkId = null,
+    name,
+    description,
+    remarks,
+    status,
+    subCategory
+  ) {
     const networkParamList = [
       { name: "UserID", value: userId },
       { name: "NetworkID", value: networkId },
@@ -264,7 +331,7 @@ module.exports = class Miscellaneous {
       { name: "NetworkDescription", value: description },
       { name: "NetworkRemarks", value: remarks },
       { name: "NetworkStatus", value: status },
-      { name: "NetworkSubCategory", value: subCategory }
+      { name: "NetworkSubCategory", value: subCategory },
     ];
     return await DbControl.executeSP("spInsert_Network", networkParamList);
   }
@@ -272,12 +339,20 @@ module.exports = class Miscellaneous {
   static async deleteNetwork(userId, networkId) {
     const networkParamList = [
       { name: "UserID", value: userId },
-      { name: "NetworkID", value: networkId }
+      { name: "NetworkID", value: networkId },
     ];
     return await DbControl.executeSP("spDelete_Network", networkParamList);
   }
 
-  static async insertSoftware(userId, softwareId, name, description, remarks, status, subCategory) {
+  static async insertSoftware(
+    userId,
+    softwareId,
+    name,
+    description,
+    remarks,
+    status,
+    subCategory
+  ) {
     const softwareParamList = [
       { name: "UserID", value: userId },
       { name: "SoftwareID", value: softwareId },
@@ -285,7 +360,7 @@ module.exports = class Miscellaneous {
       { name: "SoftwareDescription", value: description },
       { name: "SoftwareRemarks", value: remarks },
       { name: "SoftwareStatus", value: status },
-      { name: "SoftwareSubCategory", value: subCategory }
+      { name: "SoftwareSubCategory", value: subCategory },
     ];
     return await DbControl.executeSP("spInsert_Software", softwareParamList);
   }
@@ -293,12 +368,21 @@ module.exports = class Miscellaneous {
   static async deleteSoftware(userId, softwareId) {
     const softwareParamList = [
       { name: "UserID", value: userId },
-      { name: "SoftwareID", value: softwareId }
+      { name: "SoftwareID", value: softwareId },
     ];
     return await DbControl.executeSP("spDelete_Software", softwareParamList);
   }
 
-  static async insertSystem(userId, systemId = null, name, desc, remarks, company, status, subCategory) {
+  static async insertSystem(
+    userId,
+    systemId = null,
+    name,
+    desc,
+    remarks,
+    company,
+    status,
+    subCategory
+  ) {
     const systemParamList = [
       { name: "UserID", value: userId },
       { name: "SystemID", value: systemId },
@@ -307,7 +391,7 @@ module.exports = class Miscellaneous {
       { name: "SystemRemarks", value: remarks },
       { name: "SystemCompany", value: company },
       { name: "SystemStatus", value: status },
-      { name: "SystemSubCategory", value: subCategory }
+      { name: "SystemSubCategory", value: subCategory },
     ];
     return await DbControl.executeSP("spInsert_System", systemParamList);
   }
@@ -315,17 +399,22 @@ module.exports = class Miscellaneous {
   static async deleteSystem(userId, systemId) {
     const systemParamList = [
       { name: "UserID", value: userId },
-      { name: "SystemID", value: systemId }
+      { name: "SystemID", value: systemId },
     ];
     return await DbControl.executeSP("spDelete_System", systemParamList);
   }
 
-  static async insertMiscellaneous(userId, miscItemId = null, name, description) {
+  static async insertMiscellaneous(
+    userId,
+    miscItemId = null,
+    name,
+    description
+  ) {
     const miscItemParamList = [
       { name: "UserID", value: userId },
       { name: "ItemID", value: miscItemId },
       { name: "ItemName", value: name },
-      { name: "ItemDescription", value: description }
+      { name: "ItemDescription", value: description },
     ];
     return await DbControl.executeSP("spInsert_MiscItems", miscItemParamList);
   }
@@ -333,36 +422,31 @@ module.exports = class Miscellaneous {
   static async deleteMiscellaneous(userId, miscItemId) {
     const miscItemParamList = [
       { name: "UserID", value: userId },
-      { name: "MiscItemID", value: miscItemId }
+      { name: "MiscItemID", value: miscItemId },
     ];
     return await DbControl.executeSP("spDelete_MiscItem", miscItemParamList);
   }
 
   static async getServerDefaults(statusName) {
-    const serverDefaultParamList = [
-      { name: "StatusName", value: statusName }
-    ];
-    return await DbControl.executeSP("spGet_ServerDefaults", serverDefaultParamList);
-  }
+    const serverDefaultParamList = [{ name: "StatusName", value: statusName }];
+    return await DbControl.executeSP(
+      "spGet_ServerDefaults",
+      serverDefaultParamList
+    );
+  } 
 
   static async syncToRMS(syncItem) {
-    const syncItemParamList = [
-      { name: "SyncItem", value: syncItem }
-    ];
+    const syncItemParamList = [{ name: "SyncItem", value: syncItem }];
     return await DbControl.executeSP("spSync_JOSWtoRMS", syncItemParamList);
   }
 
   static async syncToHIS(syncItem) {
-    const syncItemParamList = [
-      { name: "SyncItem", value: syncItem }
-    ];
+    const syncItemParamList = [{ name: "SyncItem", value: syncItem }];
     return await DbControl.executeSP("spSync_JOSWtoHIS", syncItemParamList);
   }
 
   static async syncToHRIS(syncItem) {
-    const syncItemParamList = [
-      { name: "SyncItem", value: syncItem }
-    ];
+    const syncItemParamList = [{ name: "SyncItem", value: syncItem }];
     return await DbControl.executeSP("spSync_JOSWtoHRIS", syncItemParamList);
   }
-}; 
+};
