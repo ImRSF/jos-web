@@ -3,7 +3,7 @@ const mssql = require("mssql");
 const prodServer = {
   user: "sa",
   password: "sa123",    
-  server: "localhost\\SQL16",
+  server: "192.168.200.38\\SQL16",
   database: "JOS-Web",
   port: 1439  
 };
@@ -22,7 +22,7 @@ const devServer = {
   server: "localhost\\MSSQLSERVER2016",
   database: "JOS-Web",    
   port: 1439  
-};
+}; 
 
 const config = prodServer;
 
