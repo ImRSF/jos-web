@@ -146,7 +146,7 @@ module.exports = class JobRequest {
   // }
 
   async sendEmailForJobRequest(requestedByName) {
-    const serverDefaults = await Misc.getServerDefaults("Development");
+    const serverDefaults = await Misc.getServerDefaults("Production");
 
     const jobRequestLink =
       `Please click the following link to view it in detail.<br>http://${serverDefaults[0].ServerIP}:${serverDefaults[0].PortNumber}/jobs/job-request?requestNumber=` +

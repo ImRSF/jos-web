@@ -22,7 +22,7 @@ const devServer = {
   server: "localhost\\MSSQLSERVER2016",
   database: "JOS-Web",    
   port: 1439  
-};
+}; 
 
 const config = prodServer;
 
